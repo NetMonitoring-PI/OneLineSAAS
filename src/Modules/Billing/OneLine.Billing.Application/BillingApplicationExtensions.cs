@@ -10,8 +10,14 @@ public static class BillingApplicationExtensions
         this IServiceCollection services)
     {
         var assembly = typeof(BillingApplicationExtensions).Assembly;
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+
+        services.AddMediatR(cfg =>
+        {
+            cfg.RegisterServicesFromAssembly(assembly);
+        });
+
         services.AddValidatorsFromAssembly(assembly);
+
         return services;
     }
 }

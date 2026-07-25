@@ -12,7 +12,7 @@ public sealed class StripeWebhookHandler
     private readonly ISubscriptionRepository _subscriptionRepo;
     private readonly IInvoiceRepository _invoiceRepo;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly StripeOptions _options;
+    private readonly string _webhookSecret;
 
     public StripeWebhookHandler(
         ISubscriptionRepository subscriptionRepo,
@@ -23,7 +23,7 @@ public sealed class StripeWebhookHandler
         _subscriptionRepo = subscriptionRepo;
         _invoiceRepo = invoiceRepo;
         _unitOfWork = unitOfWork;
-        _options = options.Value;
+        _webhookSecret = options.Value.WebhookSecret;
     }
 
     public async Task HandleAsync(HttpContext context)
@@ -36,7 +36,7 @@ public sealed class StripeWebhookHandler
         try
         {
             stripeEvent = EventUtility.ConstructEvent(
-                payload, signature, _options.WebhookSecret);
+                payload, signature, _webhookSecret);
         }
         catch
         {
@@ -46,10 +46,10 @@ public sealed class StripeWebhookHandler
 
         await (stripeEvent.Type switch
         {
-            "invoice.payment_succeeded" => HandlePaymentSucceededAsync(stripeEvent),
-            "invoice.payment_failed"    => HandlePaymentFailedAsync(stripeEvent),
+            "invoice.payment_succeeded"     => HandlePaymentSucceededAsync(stripeEvent),
+            "invoice.payment_failed"        => HandlePaymentFailedAsync(stripeEvent),
             "customer.subscription.deleted" => HandleSubscriptionDeletedAsync(stripeEvent),
-            _ => Task.CompletedTask
+            _                               => Task.CompletedTask
         });
 
         context.Response.StatusCode = StatusCodes.Status200OK;
@@ -64,7 +64,6 @@ public sealed class StripeWebhookHandler
             .GetByStripeSubscriptionIdAsync(stripeInvoice.SubscriptionId);
         if (sub is null) return;
 
-        // Créer la facture dans notre DB
         var dbInvoice = Domain.Entities.Invoice.Create(
             sub.TenantId, sub.Id,
             stripeInvoice.AmountPaid / 100m,
@@ -74,8 +73,8 @@ public sealed class StripeWebhookHandler
         dbInvoice.MarkAsPaid();
         await _invoiceRepo.AddAsync(dbInvoice);
 
-        var periodEnd = stripeInvoice.Lines.Data
-            .FirstOrDefault()?.Period?.End ?? DateTime.UtcNow.AddMonths(1);
+        var periodEnd = stripeInvoice.Lines?.Data
+            ?.FirstOrDefault()?.Period?.End ?? DateTime.UtcNow.AddMonths(1);
 
         sub.Activate(periodEnd, stripeInvoice.SubscriptionId);
         _subscriptionRepo.Update(sub);
