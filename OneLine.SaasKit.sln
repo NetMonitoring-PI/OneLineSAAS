@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Observability", "Observabil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneLine.Observability.Infrastructure", "src\Modules\Observability\OneLine.Observability.Infrastructure\OneLine.Observability.Infrastructure.csproj", "{9CB1A374-9EE7-4DEC-ACC5-A6EC2DA14439}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneLine.Cli", "src\OneLine.Cli\OneLine.Cli.csproj", "{1B7B464C-A86A-4791-9427-B2501CA46A89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,18 @@ Global
 		{9CB1A374-9EE7-4DEC-ACC5-A6EC2DA14439}.Release|x64.Build.0 = Release|Any CPU
 		{9CB1A374-9EE7-4DEC-ACC5-A6EC2DA14439}.Release|x86.ActiveCfg = Release|Any CPU
 		{9CB1A374-9EE7-4DEC-ACC5-A6EC2DA14439}.Release|x86.Build.0 = Release|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Debug|x64.Build.0 = Debug|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Debug|x86.Build.0 = Debug|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Release|x64.ActiveCfg = Release|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Release|x64.Build.0 = Release|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Release|x86.ActiveCfg = Release|Any CPU
+		{1B7B464C-A86A-4791-9427-B2501CA46A89}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,6 +154,7 @@ Global
 		{5542872B-5C89-4C3D-9B48-A72D1079CAA2} = {282EE0EF-0719-FA39-321C-A995029F2B89}
 		{3C840003-8508-DBBC-31E7-DAACF9D83055} = {EC447DCF-ABFA-6E24-52A5-D7FD48A5C558}
 		{9CB1A374-9EE7-4DEC-ACC5-A6EC2DA14439} = {3C840003-8508-DBBC-31E7-DAACF9D83055}
+		{1B7B464C-A86A-4791-9427-B2501CA46A89} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43D19887-294D-4294-A52F-D801B5441803}
