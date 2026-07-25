@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Modules\Auth\OneLine.Auth.Infrastructure\OneLine.Auth.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modules\Tenants\OneLine.Tenants.Infrastructure\OneLine.Tenants.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
