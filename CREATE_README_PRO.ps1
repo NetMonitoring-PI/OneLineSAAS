@@ -1,4 +1,11 @@
-﻿<div align="center">
+# ============================================================
+# README Professionnel - One Line SaaS Kit
+# ============================================================
+
+Write-Host "=== Creation README Professionnel ===" -ForegroundColor Cyan
+
+Set-Content -Path "README.md" -Encoding UTF8 -Value @'
+<div align="center">
 
 <img src="https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=dotnet" />
 <img src="https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge" />
@@ -7,12 +14,12 @@
 
 # One Line SaaS Kit
 
-### Un backend SaaS complet en quelques minutes â€” pas en plusieurs jours.
+### Un backend SaaS complet en quelques minutes — pas en plusieurs jours.
 
-[Demarrage rapide](#demarrage-rapide) â€¢
-[Modules](#modules) â€¢
-[CLI](#cli) â€¢
-[API](#api-endpoints) â€¢
+[Demarrage rapide](#demarrage-rapide) •
+[Modules](#modules) •
+[CLI](#cli) •
+[API](#api-endpoints) •
 [Architecture](#architecture)
 
 </div>
@@ -34,7 +41,7 @@ les memes briques techniques depuis zero.
 | Integration IA : 1 semaine | `saas add ai` : 30 secondes |
 | **Total : 3 a 7 jours** | **Total : moins de 15 minutes** |
 
-> Equivalent .NET de **Laravel Spark** et **SaasRock** â€” avec une couche IA native.
+> Equivalent .NET de **Laravel Spark** et **SaasRock** — avec une couche IA native.
 
 ---
 
@@ -48,7 +55,7 @@ docker --version   # Docker Desktop installe
 git --version
 ```
 
-### Option 1 â€” CLI (recommande)
+### Option 1 — CLI (recommande)
 
 ```bash
 # Installer le CLI
@@ -73,7 +80,7 @@ docker compose up -d
 dotnet run --project src/MonStartup.API
 ```
 
-### Option 2 â€” Cloner ce repo
+### Option 2 — Cloner ce repo
 
 ```bash
 git clone https://github.com/votre-username/OneLine.SaasKit.git
@@ -117,7 +124,7 @@ dotnet run --project src/OneLine.API/OneLine.API.csproj
 
 ## Modules
 
-### Auth â€” Authentification complete
+### Auth — Authentification complete
 
 ```bash
 saas add auth
@@ -150,7 +157,7 @@ POST /api/auth/logout     Deconnecter
 
 ---
 
-### Tenants â€” Multi-tenancy
+### Tenants — Multi-tenancy
 
 ```bash
 saas add tenant
@@ -182,7 +189,7 @@ curl -H "Authorization: Bearer votre-jwt" http://localhost:5160/api/...
 
 ---
 
-### Billing â€” Paiement Stripe
+### Billing — Paiement Stripe
 
 ```bash
 saas add billing
@@ -216,7 +223,7 @@ POST   /api/billing/webhook      Recevoir les events Stripe
 
 ---
 
-### Security â€” Protection API
+### Security — Protection API
 
 ```bash
 saas add security
@@ -239,7 +246,7 @@ saas add security
 
 ---
 
-### Observability â€” Monitoring
+### Observability — Monitoring
 
 ```bash
 saas add logging
@@ -261,7 +268,7 @@ http://localhost:3001     Grafana (admin/admin)
 
 ---
 
-### AI â€” Intelligence Artificielle
+### AI — Intelligence Artificielle
 
 ```bash
 saas add ai
@@ -321,23 +328,23 @@ Response:
 
 ```
 src/
-â”œâ”€â”€ Shared/
-â”‚   â””â”€â”€ OneLine.Shared.Domain/        <- Result<T>, BaseEntity, interfaces
-â”‚
-â”œâ”€â”€ Modules/
-â”‚   â”œâ”€â”€ Auth/
-â”‚   â”‚   â”œâ”€â”€ OneLine.Auth.Domain/      <- AppUser, RefreshToken, erreurs
-â”‚   â”‚   â”œâ”€â”€ OneLine.Auth.Application/ <- Login, Register, CQRS
-â”‚   â”‚   â””â”€â”€ OneLine.Auth.Infrastructure/ <- EF Core, JWT, Repositories
-â”‚   â”‚
-â”‚   â”œâ”€â”€ Tenants/                      <- Meme structure
-â”‚   â”œâ”€â”€ Billing/                      <- Meme structure
-â”‚   â”œâ”€â”€ Security/                     <- Infrastructure uniquement
-â”‚   â”œâ”€â”€ Observability/                <- Infrastructure uniquement
-â”‚   â””â”€â”€ AI/                           <- Meme structure
-â”‚
-â”œâ”€â”€ OneLine.API/                      <- Controllers, middleware, Program.cs
-â””â”€â”€ OneLine.Cli/                      <- CLI Tool (saas new, saas add)
+├── Shared/
+│   └── OneLine.Shared.Domain/        <- Result<T>, BaseEntity, interfaces
+│
+├── Modules/
+│   ├── Auth/
+│   │   ├── OneLine.Auth.Domain/      <- AppUser, RefreshToken, erreurs
+│   │   ├── OneLine.Auth.Application/ <- Login, Register, CQRS
+│   │   └── OneLine.Auth.Infrastructure/ <- EF Core, JWT, Repositories
+│   │
+│   ├── Tenants/                      <- Meme structure
+│   ├── Billing/                      <- Meme structure
+│   ├── Security/                     <- Infrastructure uniquement
+│   ├── Observability/                <- Infrastructure uniquement
+│   └── AI/                           <- Meme structure
+│
+├── OneLine.API/                      <- Controllers, middleware, Program.cs
+└── OneLine.Cli/                      <- CLI Tool (saas new, saas add)
 ```
 
 Chaque module suit **Clean Architecture** :
@@ -420,8 +427,12 @@ MIT - libre pour usage personnel et commercial.
 
 <div align="center">
 
-**One Line SaaS Kit** â€” Developpe par Imane | EHEI Oujda | PFA 2025-2026
+**One Line SaaS Kit** — Developpe par Imane | EHEI Oujda | PFA 2025-2026
 
-*Inspire de Laravel Spark et SaasRock â€” concu pour l ecosysteme .NET*
+*Inspire de Laravel Spark et SaasRock — concu pour l ecosysteme .NET*
 
 </div>
+'@
+
+Write-Host "README.md professionnel cree" -ForegroundColor Green
+Write-Host "`nN oublie pas de remplacer votre-username dans les liens GitHub !" -ForegroundColor Yellow
