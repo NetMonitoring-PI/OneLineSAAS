@@ -1,12 +1,14 @@
 ﻿using MediatR;
+using OneLine.AI.Application;
+using OneLine.AI.Application.UseCases.Chat;
+using OneLine.AI.Application.UseCases.GetUsage;
+using OneLine.AI.Infrastructure;
 using OneLine.Auth.Application;
 using OneLine.Auth.Infrastructure;
 using OneLine.Billing.Application;
 using OneLine.Billing.Application.UseCases.CreateSubscription;
 using OneLine.Billing.Infrastructure;
-using OneLine.Billing.Infrastructure.Middleware;
 using OneLine.Observability.Infrastructure;
-using OneLine.Observability.Infrastructure.Middleware;
 using OneLine.Security.Infrastructure;
 using OneLine.Security.Infrastructure.Middleware;
 using OneLine.Security.Infrastructure.RateLimiting;
@@ -24,10 +26,16 @@ builder.Services.AddBillingApplication();
 builder.Services.AddBillingInfrastructure(builder.Configuration);
 builder.Services.AddSecurityInfrastructure(builder.Configuration);
 builder.Services.AddObservabilityInfrastructure();
+builder.Services.AddAIApplication();
+builder.Services.AddAIInfrastructure(builder.Configuration);
 
+// MediatR — tous les assemblies explicitement
 builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssembly(
-        typeof(CreateSubscriptionCommand).Assembly));
+{
+    cfg.RegisterServicesFromAssemblyContaining<CreateSubscriptionCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<ChatCommand>();
+    cfg.RegisterServicesFromAssemblyContaining<GetAIUsageQuery>();
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -47,7 +55,6 @@ app.UseMiddleware<ApiKeyMiddleware>();
 app.UseMiddleware<TenantMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseMiddleware<SubscriptionMiddleware>();
 app.MapControllers();
 
 app.Run();

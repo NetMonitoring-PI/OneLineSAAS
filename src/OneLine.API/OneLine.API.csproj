@@ -6,6 +6,7 @@
     <ProjectReference Include="..\Modules\Billing\OneLine.Billing.Infrastructure\OneLine.Billing.Infrastructure.csproj" />
     <ProjectReference Include="..\Modules\Security\OneLine.Security.Infrastructure\OneLine.Security.Infrastructure.csproj" />
     <ProjectReference Include="..\Modules\Observability\OneLine.Observability.Infrastructure\OneLine.Observability.Infrastructure.csproj" />
+    <ProjectReference Include="..\Modules\AI\OneLine.AI.Infrastructure\OneLine.AI.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
